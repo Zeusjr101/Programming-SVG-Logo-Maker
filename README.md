@@ -1,1 +1,0 @@
-# Programming-SVG-Logo-Maker

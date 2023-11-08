@@ -1,21 +1,19 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const {circles, square, triangle, rectangle } = require('./lib/shapes');
+const {Circle, Square, Triangle } = require('./lib/shapes');
 const svgGenerator = require('./lib/svgGenerator');
 
-// class svgGenerator {
-//     constructor() {
-//         this.letters = [];
-//         this.color = [];
-//         this.shape = [];
-//     }
-// }
 
 const questions = [
     {
     type: 'input',
     name: 'letters',
     message: 'Please type in a three letter?'
+    },
+    {
+        type: 'input',
+        name: 'text-color',
+        message: 'What color would you like the text to be?'
     },
     {
     type: 'input',
@@ -26,26 +24,24 @@ const questions = [
      type: 'checkbox',
      name:'shape',
      message: 'Pick a shape please?',
-     choices: ['square', 'circle', 'triangle, rectangle']
+     choices: ['Square', 'Circle', 'Triangle',]
     },
 ];
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) => {
+function writeToFile(fileName, Data) {
+    fs.writeFile(fileName, Data, (err) => {
         if(err) {
             console.log(err);
         } else {
-         console.log ('Generated log.svg');
+         console.log ('Successfully generated log.svg');
         }
     });
 }
 
-
 function init() {
     inquirer.prompt(questions).then((answers) => {
-        const fileName = 'logo.svg';
-        writeToFile(fileName, data); 
-        
+        const svgContent = svgGenerator(answers);
+        writeToFile('logo.svg', svgContent); 
     });
 }
-
-init();
+  
+  init();

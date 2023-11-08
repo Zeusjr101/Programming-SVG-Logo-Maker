@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your HTML Page Title</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Your existing HTML structure -->
+    
+    <main>
+        <!-- Placeholder for SVG content -->
+        <div id="svg-container"></div>
+    </main>
+
+    <!-- Your existing footer section -->
+
+    <script>
+        // Your JavaScript code here
+        function svgGenerator(data) {
+            // ... (your svgGenerator function code)
+        }
+
+        const fs = require('fs');
+        const inquirer = require('inquirer');
+        const svgGenerator = require('./lib/svgGenerator');
+
+        // ... (rest of your JavaScript code)
+
+        // Render SVG content
+        inquirer.prompt(questions).then((answers) => {
+            const svgContent = svgGenerator(answers);
+            document.getElementById("svg-container").innerHTML = svgContent;
+        });
+    </script>
+</body>
+</html>
